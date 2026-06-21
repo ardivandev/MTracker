@@ -18,20 +18,15 @@ HTML, Tailwind CSS, JavaScript (ES Modules), Chart.js, Tabler Icons
 
 Karena project ini pakai ES Modules, harus dijalankan lewat local server (tidak bisa dibuka langsung dari file).
 
-\`\`\`bash
+### pakai Python
 
-# pakai Python
+1. cd src
+2. python -m http.server
 
-cd src
-python -m http.server
+### atau pakai Node.js
 
-# atau pakai Node.js
-
-cd src
-npx serve
-\`\`\`
-
-Bisa juga pakai ekstensi **Live Server** di VS Code.
+1. cd src
+2. npx serve
 
 ---
 
