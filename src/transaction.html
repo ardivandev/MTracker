@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTracker</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="assets/logo/MTracker-Logo.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div
+      id="toast"
+      class="fixed top-5 right-5 z-50 hidden translate-x-10 rounded-lg bg-green-600 px-4 py-3 text-sm font-medium text-white opacity-0 shadow-lg transition-all duration-300"
+    >
+      Transaksi berhasil ditambahkan!
+    </div>
+    <div class="block overflow-hidden bg-gray-50 lg:flex lg:h-screen lg:w-full">
+      <aside
+        class="bg-second-black-custom fixed top-24 -left-full z-50 m-5 flex h-[calc(100vh-120px)] w-[70%] flex-col justify-between rounded-xl border border-gray-100 p-5 shadow-md transition-all duration-300 md:w-[50%] lg:relative lg:top-0 lg:left-0 lg:m-0 lg:h-full lg:w-64 lg:rounded-none lg:border-0 lg:shadow-none"
+        id="aside"
+      >
+        <div class="flex flex-col gap-10">
+          <img
+            src="assets/logo/Logo-Transparent-White.png"
+            alt="MTracker"
+            class="w-32"
+          />
+          <nav class="flex flex-col gap-3">
+            <a
+              href="index.html"
+              class="hover:bg-black-custom focus:bg-primary rounded p-3 text-lg font-medium text-white transition-colors"
+            >
+              📊 Dashboard
+            </a>
+            <a
+              href="#"
+              class="bg-primary hover:bg-black-custom focus:bg-primary rounded p-3 text-lg font-medium text-white transition-colors"
+            >
+              💸 Transaksi
+            </a>
+          </nav>
+        </div>
+
+        <div class="border-t border-gray-800 pt-4 lg:border-0">
+          <p class="text-xs text-gray-400">v1.0.0</p>
+        </div>
+      </aside>
+      <div class="flex min-w-0 flex-1 flex-col">
+        <header
+          class="m-5 rounded-xl border border-gray-100 bg-white p-4 shadow-md"
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-5">
+              <button
+                type="button"
+                title="hamburgermenu"
+                id="hamburgermenu"
+                class="cursor-pointer text-gray-600 hover:text-gray-900 lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </button>
+
+              <div class="space-y-0.5">
+                <p
+                  class="text-primary text-lg font-semibold md:text-xl lg:text-2xl"
+                >
+                  Catat Transaksi
+                </p>
+                <p class="text-xs text-gray-500 md:text-sm lg:text-base">
+                  Tambahkan pemasukan atau pengeluaranmu di sini.
+                </p>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main class="min-h-0 flex-1 overflow-y-auto px-5 pb-5">
+          <div>
+            <!-- Form Tambah Transaksi -->
+            <section
+              class="mb-5 rounded-xl border border-gray-100 bg-white px-4 py-7 shadow-md lg:w-[50%]"
+            >
+              <h1 class="mb-8 text-2xl font-semibold">✏️ Catat Transaksi</h1>
+              <form id="transactionForm" class="flex flex-col gap-5">
+                <div>
+                  <label
+                    for="name"
+                    class="mb-2 block text-sm text-gray-500 uppercase"
+                    >Nama Transaksi</label
+                  >
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Contoh: Membeli Buku"
+                    required
+                    class="border-second-black-custom w-full rounded-lg border-2 px-4 py-2 text-sm focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label class="mb-2 block text-sm text-gray-500 uppercase"
+                    >Jenis Transaksi</label
+                  >
+                  <div class="flex gap-3">
+                    <label
+                      class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-gray-200 py-2 text-sm font-medium text-green-600 transition-colors has-[:checked]:border-green-500 has-[:checked]:bg-green-50"
+                    >
+                      <input
+                        type="radio"
+                        name="jenis"
+                        value="pemasukan"
+                        checked
+                        class="accent-green-600"
+                      />
+                      Pemasukan
+                    </label>
+                    <label
+                      class="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-gray-200 py-2 text-sm font-medium text-red-600 transition-colors has-[:checked]:border-red-500 has-[:checked]:bg-red-50"
+                    >
+                      <input
+                        type="radio"
+                        name="jenis"
+                        value="pengeluaran"
+                        class="accent-red-600"
+                      />
+                      Pengeluaran
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    for="nominal"
+                    class="mb-2 block text-sm text-gray-500 uppercase"
+                    >Nominal (Rp)</label
+                  >
+                  <input
+                    type="number"
+                    name="nominal"
+                    id="nominal"
+                    placeholder="Contoh: 20000"
+                    required
+                    min="0"
+                    class="border-second-black-custom w-full rounded-lg border-2 px-4 py-2 text-sm focus:outline-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  class="bg-primary mt-1 cursor-pointer rounded-lg py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
+                >
+                  Simpan Transaksi
+                </button>
+              </form>
+            </section>
+
+            <!-- Tabel Riwayat Transaksi -->
+            <section
+              class="max-h-[500px] overflow-auto rounded-xl border border-gray-100 bg-white px-4 py-7 shadow-md"
+            >
+              <table class="w-full table-auto border-collapse text-sm">
+                <thead>
+                  <tr>
+                    <th
+                      class="w-12 border-b border-gray-200 px-3 py-2 text-left font-medium text-gray-500"
+                    >
+                      No
+                    </th>
+                    <th
+                      class="border-b border-gray-200 px-3 py-2 text-left font-medium text-gray-500"
+                    >
+                      Nama
+                    </th>
+                    <th
+                      class="border-b border-gray-200 px-3 py-2 text-right font-medium text-gray-500"
+                    >
+                      Nominal
+                    </th>
+                    <th
+                      class="w-24 border-b border-gray-200 px-3 py-2 text-center font-medium text-gray-500"
+                    >
+                      Aksi
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="transactionBody"></tbody>
+              </table>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script type="module" src="js/transaction.js"></script>
+  </body>
+</html>
